@@ -1,0 +1,47 @@
+@import "../../style/mixin";
+.nav_wrapper{
+  background: transparent;
+  position: fixed;
+  box-sizing: border-box;
+  padding:0 45px;
+  width: 100%;
+  .wh(100%,90px);
+  line-height: 90px;
+  .textLogo{
+    position: absolute;
+    font-size: 25px;
+    font-weight: 700;
+    margin-right: 50px;
+    a{
+      color: @fc;
+    }
+    sup{
+      left: 10px;
+    }
+  }
+  .nav_menu_wrapper{
+    text-align: center;
+    float: right;
+    :global{
+      .ant-menu{
+        font-size: 15px;
+        background: transparent;
+
+        color: rgba(255,255,255,.8);
+      }
+      .ant-menu-horizontal{
+        border-bottom: none;
+        line-height: 90px;
+        overflow: hidden;
+        .ant-menu-item{
+          width: 100px;
+          box-sizing: border-box;
+          border-bottom: none;
+          &.ant-menu-item-active{
+            color:#fff;
+          }
+        }
+      }
+    }
+  }
+}

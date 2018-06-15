@@ -1,0 +1,40 @@
+@import "../../style/mixin";
+.con1_wrapper{
+  margin: 0 auto;
+  padding: 130px 0;
+  height: 600px;
+  max-width: 1200px;
+  background-size: 100% 100%;
+  .cons_lists{
+    margin-top: 100px;
+    .list_item_wrapper{
+      padding-left:30px ;
+      padding-right:30px ;
+      .img_wrapper{
+        width: 15%;
+        display: inline-block;
+        vertical-align: top;
+        img{
+          .wh(100%,auto);
+        }
+      }
+      .info_wrapper{
+
+        width: 85%;
+        display: inline-block;
+        padding-left: 8%;
+        box-sizing: border-box;
+        h1{
+          color:@fc;
+          font-size: 30px;
+          text-align: left;
+        }
+        p{
+          color:@fc;
+          font-size: 18px;
+          text-align: left;
+        }
+      }
+    }
+  }
+}
