@@ -9,6 +9,7 @@ import styles from './index.less'
 import TweenOne from 'rc-tween-one'
 import QueueAnim from 'rc-queue-anim';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
+import MyParticles from '../../components/MyParticles'
 
 import ContentHeader from '../ContentHeader'
 import {Icon,Row,Col} from 'antd'
@@ -47,6 +48,7 @@ const Content1 = () => {
     })
     return (
             <OverPack className={styles.con1_wrapper}>
+                <MyParticles configParamType="star" key="banner"/>
                 <QueueAnim
                     type={['bottom', 'top']}
                     key="con0-header-box">

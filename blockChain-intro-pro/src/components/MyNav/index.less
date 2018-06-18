@@ -1,9 +1,13 @@
 @import "../../style/mixin";
 .nav_wrapper{
+  top:0;
+  z-index:100;
   background: transparent;
   position: fixed;
   box-sizing: border-box;
   padding:0 45px;
+  padding-top:20px;
+  transition: padding-top .3s ease-in-out;
   width: 100%;
   .wh(100%,90px);
   line-height: 90px;
@@ -41,6 +45,34 @@
             color:#fff;
           }
         }
+      }
+    }
+  }
+}
+
+.nav_wrapper.moving{
+  padding-top:0;
+  background: @fc;
+  box-shadow: 0 1px 2px rgba(0,0,0,.08);
+  .textLogo{
+    position: absolute;
+    font-size: 25px;
+    font-weight: 700;
+    margin-right: 50px;
+    a{
+      color: @deepFc;
+    }
+    sup{
+      left: 10px;
+    }
+  }
+  .nav_menu_wrapper {
+    :global {
+      .ant-menu {
+        color: @deepFc;
+        .ant-menu-item-active{
+            color:@deepFc;
+          }
       }
     }
   }

@@ -9,17 +9,20 @@ import styles from './index.less'
 import TweenOne from 'rc-tween-one'
 import QueueAnim from 'rc-queue-anim';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
+import MyParticles from '../../components/MyParticles'
 
 import ContentHeader from '../ContentHeader'
 import {Icon,Row,Col} from 'antd'
 
 const getDelay = e => e % 3 * 100 + Math.floor(e / 3) * 100 + 300;//4个一组
 
-const Content1 = () => {
-    const desc = '北斗链是企业级区块链开发和应用平台';
+const Content3 = () => {
+    const desc = '北斗链有一支技术功力深厚而又高效的研发团队，长期专注于操作系统、网络通信、加密算法等底层开发。 北斗链平台以开源、开放的原则，欢迎全球的技术和运营人才的加盟，共同开启安全区块链平台的新时代。';
     const blockArray = [
-        {  title: '智能资产引擎', content: '北斗链是一个区块链底层框架，它继承比特币和以太坊的优秀特点，为适应未来大规模主流商业应用的需求，提出了交易引擎的核心概念，在交易安全性、稳定性和易用性方面，走在了第三代区块链平台的前列。' },
-        {  title: '权限控制引擎', content: '北斗链希望成为继Bitcoin和Ethereum之后，另一个被世界广泛认可和接受的区块链框架，在某些特定行业，比如金融科技、供应链管理、共享经济等领域，成为主流的基础开发平台。' },
+        {  title: '黄涛', 'minTitle' : 'CEO , FOUNDER',content: '毕业于北京大学，20多年的技术研发管理经验，长期从事IT架构设计、IT Consulting。首次提出“区块链业务分析”的概念' },
+        {  title: '李勇', 'minTitle' : 'CEO , FOUNDER',content: '毕业于北京大学，20多年的技术研发管理经验，长期从事IT架构设计、IT Consulting。首次提出“区块链业务分析”的概念' },
+        {  title: '陈怡然', 'minTitle' : 'CEO , FOUNDER',content: '毕业于北京大学，20多年的技术研发管理经验，长期从事IT架构设计、IT Consulting。首次提出“区块链业务分析”的概念' },
+        {  title: '游开兴', 'minTitle' : 'CEO , FOUNDER',content: '毕业于北京大学，20多年的技术研发管理经验，长期从事IT架构设计、IT Consulting。首次提出“区块链业务分析”的概念' },
     ];
     const children = blockArray.map((item,i) => {
         const delay = getDelay(i);//累计时间
@@ -30,13 +33,16 @@ const Content1 = () => {
             <TweenOne
                 animation={liAnim}
                 key={i}>
-                <Col className={styles.list_item_wrapper} span={12}>
+                <Col className={styles.list_item_wrapper} span={6}>
                     <div className={styles.info_wrapper}>
                         <TweenOne key="h1" animation={childrenAnim} component="h1">
                             {item.title}
                         </TweenOne>
+                        <TweenOne key="h3" animation={{...childrenAnim,delay : delay + 200}} component="h3">
+                            {item.minTitle}
+                        </TweenOne>
                         {/*慢100*/}
-                        <TweenOne key="p" animation={{...childrenAnim,delay : delay + 200}} component="p" >
+                        <TweenOne key="p" animation={{...childrenAnim,delay : delay + 400}} component="p" >
                             {item.content}
                         </TweenOne>
                     </div>
@@ -46,7 +52,8 @@ const Content1 = () => {
         )
     })
     return (
-            <OverPack className={styles.con1_wrapper}>
+            <OverPack className={styles.con3_wrapper}>
+                <MyParticles configParamType="star" key="banner"/>
                 <QueueAnim
                     type={['bottom', 'top']}
                     key="con0-header-box">
@@ -54,7 +61,7 @@ const Content1 = () => {
                         key="title"
                         theme="white"
                         className="content"
-                        title="关于"
+                        title="核心团队"
                         desc={desc}/>
                 </QueueAnim>
                 <QueueAnim
@@ -68,4 +75,4 @@ const Content1 = () => {
                 </OverPack>
         )
     }
-export default Content1
+export default Content3

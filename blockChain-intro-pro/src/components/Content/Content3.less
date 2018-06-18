@@ -1,12 +1,14 @@
 @import "../../style/mixin";
-.con1_wrapper{
+.con3_wrapper{
   margin: 0 auto;
+  position: relative;
   padding: 130px 0;
-  height: 600px;
+  height: 500px;
+  box-sizing: content-box;
   max-width: 1200px;
   background-size: 100% 100%;
   .cons_lists{
-    margin-top: 100px;
+    margin-top: 50px;
     .list_item_wrapper{
       padding-left:30px ;
       padding-right:30px ;
@@ -26,13 +28,21 @@
         box-sizing: border-box;
         h1{
           color:@fc;
-          font-size: 30px;
+          font-size: 25px;
           text-align: left;
         }
-        p{
+        h3{
           color:@fc;
+          font-size: 20px;
+          text-align: left;
+          margin-bottom: 25px;
+        }
+        p{
+          color:@cardBg;
+          letter-spacing: 2px;
           font-size: 18px;
           text-align: left;
+          opacity: .85 !important;
         }
       }
     }

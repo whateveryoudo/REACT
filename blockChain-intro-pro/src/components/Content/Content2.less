@@ -1,0 +1,53 @@
+@import "../../style/mixin";
+.con2_wrapper{
+  margin: 0 auto;
+  padding: 130px 0;
+  height: 250px;
+  box-sizing: content-box;
+  max-width: 1200px;
+  background-size: 100% 100%;
+ .con2_img_wrapper{
+   .wh(40%,100%);
+   left: 0;
+   position: absolute;
+   &>span{
+     display: inline-block;
+     width: 50%;
+     //.wh(55%,50vh);
+     //line-height: 50vh;
+     right: 10%;
+     position: absolute;
+     img{
+       vertical-align: middle;
+     }
+   }
+ }
+  .con2_info_wrapper{
+    .wh(40%,auto);
+    position: absolute;
+    right: 0;
+    h1,p{
+      width: 70%;
+    }
+  }
+}
+//翻转
+.con2_wrapper.opposite{
+  .con2_img_wrapper{
+    .wh(46%,100%);
+    right: 0;
+    left: auto;
+    &>span{
+      right: auto;
+      left: 0%;
+    }
+  }
+  .con2_info_wrapper{
+    .wh(40%,auto);
+    left: 17%;
+    right:auto;
+  }
+}
+.con2_wrapper.content_bg{
+  height:337px;
+}

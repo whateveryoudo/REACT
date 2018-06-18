@@ -6,17 +6,18 @@
  */
 import React from 'react'
 import Particles from 'react-particles-js'
-import particlesConfig from '../utils/particlesConfig'
+import {defaultData,starData} from '../utils/particlesConfig'
 class MyParticles extends React.PureComponent{
     render(){
         return (
             <Particles
                 params={
-                    particlesConfig
+                    this.props.configParamType == 'star' ? starData : defaultData
                 }
                 style={{
                     top: 0,
                     left: 0,
+                    position:'absolute',
                     width: "100%",
                     height: "100%"
                 }}/>
