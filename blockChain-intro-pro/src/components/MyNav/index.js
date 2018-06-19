@@ -6,6 +6,7 @@
  */
 import React,{PureComponent} from 'react'
 import styles from './index.less'
+import {Link} from 'dva/router'
 import TweenOne from 'rc-tween-one'
 import classnames from 'classnames'
 import {Menu} from 'antd'
@@ -18,7 +19,7 @@ export default class MyNav extends PureComponent{
             boundary : 100,
             movingFlag : false,
             navData : [
-                {text : '白皮书',link : '/'},
+                {text : '白皮书',link : '/whiteBook'},
                 {text : '矿工入口',link : '/'},
                 {text : '咨询',link : '/'}
             ]
@@ -42,7 +43,7 @@ export default class MyNav extends PureComponent{
     render(){
         const {navData} = this.state;
         const navChildren = navData.map((item,index) => {
-            return (<Item key={index}>{item.text}</Item>)
+            return (<Item key={index}><Link to={item.link}>{item.text}</Link></Item>)
         })
         const navCls = classnames(styles.nav_wrapper,this.state.movingFlag ? styles.moving : '');
         return (

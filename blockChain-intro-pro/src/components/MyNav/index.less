@@ -28,20 +28,24 @@
     float: right;
     :global{
       .ant-menu{
-        font-size: 15px;
+
         background: transparent;
 
-        color: rgba(255,255,255,.8);
+
       }
       .ant-menu-horizontal{
         border-bottom: none;
         line-height: 90px;
         overflow: hidden;
         .ant-menu-item{
+          a{
+            font-size: 15px;
+            color: rgba(255,255,255,.8);
+          }
           width: 100px;
           box-sizing: border-box;
           border-bottom: none;
-          &.ant-menu-item-active{
+          &.ant-menu-item-active a{
             color:#fff;
           }
         }
@@ -68,12 +72,16 @@
   }
   .nav_menu_wrapper {
     :global {
-      .ant-menu {
-        color: @deepFc;
-        .ant-menu-item-active{
-            color:@deepFc;
+        .ant-menu-horizontal {
+          .ant-menu-item{
+            a{
+              color: @deepFc;
+              .ant-menu-item-active a{
+                color:@deepFc;
+              }
+            }
           }
-      }
+        }
     }
   }
 }

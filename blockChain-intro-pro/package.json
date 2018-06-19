@@ -3,8 +3,7 @@
   "scripts": {
     "start": "cross-env PORT=8005 roadhog server",
     "build": "roadhog build",
-    "lint": "eslint --ext .js src test",
-    "precommit": "npm run lint"
+    "lint": "eslint --ext .js src test"
   },
   "dependencies": {
     "dva": "^2.3.1",

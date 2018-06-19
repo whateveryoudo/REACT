@@ -1,7 +1,6 @@
 import React,{createElement} from 'react';
-import { Router, Route, Switch } from 'dva/router';
+import { Router, Route, Switch,Redirect } from 'dva/router';
 import dynamic from 'dva/dynamic';
-import IndexPage from './routes/IndexPage';
 
 const modelNotExisted = (app,model) => {
     return !app._models.some(({namespace}) => {
@@ -29,11 +28,14 @@ const dynamicWrapper = (app,models,component) => {
 
 
 function RouterConfig({ history,app }) {
-    const Home = dynamicWrapper(app, [], () => import('./routes/Home/Home'))
+    const Home = dynamicWrapper(app, [], () => import('./routes/Home/Home'));
+    const WhiteBook = dynamicWrapper(app, [], () => import('./routes/WhiteBook/WhiteBook'));
   return (
     <Router history={history}>
       <Switch>
-        <Route path="/" exact component={Home} />
+        <Route path="/home" exact component={Home} />
+        <Route path="/whiteBook" exact component={WhiteBook} />
+          <Redirect from="/" to="/home"/>
       </Switch>
     </Router>
   );

@@ -1,0 +1,34 @@
+@import "../../style/mixin";
+.banner_pri_wrapper{
+  color:@fc;
+  .wh(100%,500px);
+  background: @deepFc;
+  position: relative;
+  .overlay{
+    background: @bannerBg;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .banner_pri_con{
+    .center();
+    text-align: center;
+    h2{
+      .sc(60px,@fc);
+
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+    p{
+      font-size: 20px;
+      width: 80%;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+  }
+}
