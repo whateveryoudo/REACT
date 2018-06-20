@@ -4,6 +4,8 @@ import {Button} from 'antd'
 import styles from './Home.less';
 import MyNav from '../../components/MyNav'
 import Banner from '../../components/Banner'
+
+import { enquireScreen } from 'enquire-js';
 import Content0 from '../../components/Content/Content0'
 import Content1 from '../../components/Content/Content1'
 /*通用左右布局类型*/
@@ -17,6 +19,14 @@ import Footer from '../../components/Footer'
 class Home extends React.Component{
     static propTypes = {
 
+    }
+    componentDidMount(){
+        enquireScreen(b => {
+            this.props.dispatch({
+                type : 'global/updateIsMobile',
+                payload : b
+            })
+        })
     }
     state = {
         //左右内容区
@@ -51,10 +61,13 @@ class Home extends React.Component{
         ]
     };
     render(){
+        const {
+            isMobile
+        } = this.props;
         return (
             <div className={styles.normal}>
-                <Banner>
-                    <MyNav key="mynav"/>
+                <Banner isMobile={isMobile}>
+                    <MyNav isMobile={isMobile} key="mynav"/>
                 </Banner>
                 <div className={styles.content_template}>
                     <Content0/>
@@ -85,4 +98,8 @@ class Home extends React.Component{
 }
 
 
-export default connect()(Home);
+export default connect(state => {
+    return {
+        isMobile : state.global.isMobile
+    }
+})(Home);

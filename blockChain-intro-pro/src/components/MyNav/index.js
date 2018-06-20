@@ -41,11 +41,33 @@ export default class MyNav extends PureComponent{
         })
     }
     render(){
+        const {isMobile} = this.props;
         const {navData} = this.state;
         const navChildren = navData.map((item,index) => {
             return (<Item key={index}><Link to={item.link}>{item.text}</Link></Item>)
         })
         const navCls = classnames(styles.nav_wrapper,this.state.movingFlag ? styles.moving : '');
+        //手机端顶部显示
+        const miniContent = (
+            <div className={styles.nav_phone_wrapper}>
+                <div className={styles.nav_phone_bar}>
+                    <em />
+                    <em />
+                    <em />
+                </div>
+            </div>
+        )
+        //PC显示
+        const middleContent = (
+            <TweenOne
+                key='nav-menu'
+                animation={{x : 30,type : 'from',ease : 'easeOutQuad'}}
+                className={styles.nav_menu_wrapper}>
+                <Menu mode="horizontal">
+                    {navChildren}
+                </Menu>
+            </TweenOne>
+        )
         return (
         <TweenOne
             key='nav-wrapper'
@@ -62,14 +84,7 @@ export default class MyNav extends PureComponent{
                 </a>
             </TweenOne>
             {/*菜单项*/}
-            <TweenOne
-                key='nav-menu'
-                animation={{x : 30,type : 'from',ease : 'easeOutQuad'}}
-                className={styles.nav_menu_wrapper}>
-                <Menu mode="horizontal">
-                    {navChildren}
-                </Menu>
-            </TweenOne>
+            {isMobile ? miniContent : middleContent}
         </TweenOne>
         )
     }
