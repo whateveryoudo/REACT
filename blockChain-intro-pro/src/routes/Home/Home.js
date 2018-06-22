@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'dva';
 import {Button} from 'antd'
 import styles from './Home.less';
-import MyNav from '../../components/MyNav'
 import Banner from '../../components/Banner'
 
 import { enquireScreen } from 'enquire-js';
@@ -14,19 +13,10 @@ import Content2 from '../../components/Content/Content2'
 
 import Content3 from '../../components/Content/Content3'
 
-import Footer from '../../components/Footer'
 
 class Home extends React.Component{
     static propTypes = {
 
-    }
-    componentDidMount(){
-        enquireScreen(b => {
-            this.props.dispatch({
-                type : 'global/updateIsMobile',
-                payload : b
-            })
-        })
     }
     state = {
         //左右内容区
@@ -60,38 +50,40 @@ class Home extends React.Component{
             }
         ]
     };
+
+
+
+
     render(){
         const {
             isMobile
         } = this.props;
         return (
             <div className={styles.normal}>
-                <Banner isMobile={isMobile}>
-                    <MyNav isMobile={isMobile} key="mynav"/>
-                </Banner>
+                <Banner isMobile={isMobile}/>
+
                 <div className={styles.content_template}>
-                    <Content0/>
+                    <Content0 isMobile={isMobile}/>
                 </div>
                 <div style={{ background: "url('http://www.beidouchain.com/wp-content/uploads/2018/03/bg-2-1.jpg')"}}>
                     <Content1/>
                 </div>
                 {
                     this.state.mainConData.map((item,i) => {
-                        if(item.background){
+                        const tempProps = {...item,isMobile};
+                        if(tempProps.background){
                             return (
-                                <div key={i} style={{background : item.background}}>
-                                    <Content2  {...item}/>
+                                <div key={i} style={{background : tempProps.background}}>
+                                    <Content2  {...tempProps}/>
                                 </div>
-                                )
+                            )
                         }
-                        return (<Content2 key={i} {...item}/>);
+                        return (<Content2 key={i} {...tempProps}/>);
                     })
                 }
                 <div style={{ background: "url('http://www.beidouchain.com/wp-content/uploads/2018/03/bg-3.jpg')"}}>
                     <Content3/>
                 </div>
-
-                <Footer/>
             </div>
         )
     }
@@ -100,6 +92,7 @@ class Home extends React.Component{
 
 export default connect(state => {
     return {
+        movingFlag : state.global.movingFlag,
         isMobile : state.global.isMobile
     }
 })(Home);

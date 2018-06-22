@@ -24,9 +24,15 @@ export default class Footer extends PureComponent{
     }
     render(){
         const {navData} = this.state;
+        const {isMobile} = this.props;
         const navChildren = navData.map((item,index) => {
             return (<Item key={index}>{item.text}</Item>)
         })
+        const animType = {
+            oneLeft : isMobile ?{y : '+=30',opacity:0,type : 'from'} : {x : '-=30',opacity:0,type : 'from'},
+            oneRight : isMobile ?{y : '+=30',opacity:0,type : 'from'} : {x : '+=30',opacity:0,type : 'from'}
+        }
+
         return (
         <OverPack playScale={0.05} className={styles.footer_wrapper}>
 
@@ -34,7 +40,7 @@ export default class Footer extends PureComponent{
                 <TweenOne
                     key='nav-logo'
                     className={styles.textLogo}
-                    animation={{x : '-=30',type : 'from',ease : 'easeOutQuad'}}>
+                    animation={animType.oneLeft}>
                     <a  href="/" >
                         北斗链
                         <sup>TM</sup>
@@ -49,7 +55,7 @@ export default class Footer extends PureComponent{
                 <TweenOne
                     key='nav-menu'
                     className={styles.right_wrapper}
-                    animation={{x : '+=30',type : 'from',ease : 'easeOutQuad'}}>
+                    animation={animType.oneRight}>
                     © 2017 <a href="http://www.miitbeian.gov.cn/" target="_blank">豫ICP备12021065号</a>
                 </TweenOne>
         </OverPack>

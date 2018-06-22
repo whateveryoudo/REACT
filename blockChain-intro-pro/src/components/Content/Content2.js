@@ -15,17 +15,18 @@ import {Icon,Row,Col} from 'antd'
 
 const getDelay = e => e % 3 * 100 + Math.floor(e / 3) * 100 + 300;//4个一组
 
-const Content2 = ({type,imgData,infoData,overClassName,...restProp}) => {
+const Content2 = ({isMobile,type,imgData,infoData,overClassName,...restProp}) => {
     //还没加移动端
     const {title = '无',desc = '无'} = infoData;
 
     const animType = {
-        queue : 'right',
-        one : {x : '-=30',opacity:0,type : 'from'}
+        queue : isMobile ? 'bottom' : 'right',
+
+        one : isMobile ?{y : '+=30',opacity:0,type : 'from'} : {x : '-=30',opacity:0,type : 'from'}
     }
     const animTypeLeft = {
-        queue : 'left',
-        one : {x : '+=30',opacity:0,type : 'from'}
+        queue : isMobile ? 'bottom' : 'left',
+        one : isMobile ?{y : '+=30',opacity:0,type : 'from'} : {x : '+=30',opacity:0,type : 'from'}
     }
     const cls = classnames(styles.con2_wrapper,styles[overClassName],type == 'toRight' ? '' : styles['opposite']);
     const targetAnim = type == 'toRight' ? animType : animTypeLeft;

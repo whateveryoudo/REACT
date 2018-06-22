@@ -1,17 +1,19 @@
 import React from 'react';
+import { connect } from 'dva';
 import {Button} from 'antd'
-import styles from './WhiteBook.less';
+import styles from './index.less';
 import BannerPrimary from '../../components/BannerPrimary'
-import Content0 from '../../components/WhiteBook/Content0'
+import Content0 from '../../components/Minter/Content0'
 
-class WhiteBook extends React.Component{
+class News extends React.Component{
     static propTypes = {
 
     }
     render(){
+
         return (
             <div className={styles.normal}>
-                <BannerPrimary title="白皮书"/>
+                <BannerPrimary title="资讯"/>
                 <div className={styles.content_template}>
                     <Content0/>
                 </div>
@@ -19,5 +21,5 @@ class WhiteBook extends React.Component{
         )
     }
 }
-export default WhiteBook;
+export default News;
 

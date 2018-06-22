@@ -26,6 +26,7 @@ export default class Banner extends PureComponent{
         }
     }
     render(){
+
        const {children} = this.props;
         return (
        <OverPack

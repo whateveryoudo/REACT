@@ -18,7 +18,7 @@ export default class BannerPrimary extends PureComponent{
         super(props);
     }
     render(){
-       const {children} = this.props;
+       const {children,title} = this.props;
         return (
        <OverPack
            replay
@@ -31,7 +31,7 @@ export default class BannerPrimary extends PureComponent{
                 key="text"
                 delay={200}
                 className={styles.banner_pri_con}>
-                <h2 key="title">白皮书</h2>
+                <h2 key="title">{title}</h2>
             </QueueAnim>
        </OverPack>
         )

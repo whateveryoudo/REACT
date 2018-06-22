@@ -14,7 +14,7 @@ import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 
 
 
-const ContentHeader = ({title,desc,className,theme,...props}) => {
+const ContentHeader = ({isMobile,title,desc,className,theme,...props}) => {
     const cls = classnames(styles.con_header,className,theme == 'white' ? styles['white'] : '');
     return (
         <QueueAnim

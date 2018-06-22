@@ -2,7 +2,7 @@
 .con0_wrapper{
   margin: 0 auto;
   padding: 130px 0;
-  //height: 100vh;
+  height: auto;
   .cons_lists{
     margin-top: 100px;
     .list_item_wrapper{
@@ -32,4 +32,26 @@
       }
     }
   }
+}
+@media screen and (max-width: 767px) {
+  .con0_wrapper{
+    padding: 50px 0;
+    height: auto;
+    .cons_lists{
+      margin-top: 40px;
+      .list_item_wrapper{
+        margin-top:40px;
+        .info_wrapper{
+          h1{
+            font-size: 20px;
+          }
+          p{
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+  }
+
 }

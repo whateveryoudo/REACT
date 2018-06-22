@@ -28,12 +28,14 @@ const Content3 = () => {
         const delay = getDelay(i);//累计时间
         const liAnim = {opacity:0,type:'from',delay,ease: 'easeOutQuad'}
         const childrenAnim = {...liAnim,x:"+=10",delay : delay};//子项延时
-
+        const layout = {xs : 24,sm : 24,md : 12,lg : 6}
         return (
             <TweenOne
                 animation={liAnim}
+                className={styles.list_item_wrapper}
+                componentProps={layout}
+                component={Col}
                 key={i}>
-                <Col className={styles.list_item_wrapper} span={6}>
                     <div className={styles.info_wrapper}>
                         <TweenOne key="h1" animation={childrenAnim} component="h1">
                             {item.title}
@@ -46,8 +48,6 @@ const Content3 = () => {
                             {item.content}
                         </TweenOne>
                     </div>
-                </Col>
-
             </TweenOne>
         )
     })

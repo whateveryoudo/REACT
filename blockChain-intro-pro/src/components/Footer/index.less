@@ -1,6 +1,5 @@
 @import "../../style/mixin";
 .footer_wrapper{
-
   background: @footBg;
   box-sizing: border-box;
   padding:0 45px;
@@ -62,3 +61,29 @@
     }
   }
 }
+@media screen and (max-width: 767px) {
+  .footer_wrapper{
+    .fj();
+    flex-direction: column;
+    line-height: 40px;
+    text-align: center;
+    padding:10px 0;
+    box-sizing: content-box;
+    .textLogo{
+      position: relative;
+      flex-direction: column;
+      margin: 0 auto;
+      .nav_menu_wrapper{
+        :global{
+          .ant-menu-horizontal{
+            line-height: 40px;
+          }
+        }
+      }
+    }
+    .right_wrapper {
+      float: inherit;
+    }
+  }
+}
+

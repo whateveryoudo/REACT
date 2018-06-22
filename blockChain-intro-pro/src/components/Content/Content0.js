@@ -15,7 +15,7 @@ import {Icon,Row,Col} from 'antd'
 
 const getDelay = e => e % 3 * 100 + Math.floor(e / 3) * 100 + 300;//4个一组
 
-const Content0 = () => {
+const Content0 = ({isMobile}) => {
     const desc = '基础交易引擎是北斗链交易引擎发挥作用的基础构件，它们植入在北斗链的核心层，应用系统只需通过API方式调用即可。'
     const blockArray = [
         { icon: 'https://zos.alipayobjects.com/rmsportal/ScHBSdwpTkAHZkJ.png', title: '智能资产引擎', content: '北斗链将本地化货币和Token合二为一，升级为智能资产。智能资产在网络层面上安全性更强。' },
@@ -29,12 +29,12 @@ const Content0 = () => {
         const delay = getDelay(i);//累计时间
         const liAnim = {opacity:0,type:'from',delay,ease: 'easeOutQuad'}
         const childrenAnim = {...liAnim,x:"+=10",delay : delay + 100};//子项延时
-
+        const layout = {xs : 24,sm : 24,md : 12,lg : 8}
         return (
             <TweenOne
                 animation={liAnim}
                 key={i}>
-                <Col className={styles.list_item_wrapper} span={8}>
+                <Col {...layout} className={styles.list_item_wrapper}>
                     <TweenOne
                         animation={{x:'-=10',opacity:0,type:'from',ease:'easeOutQuad'}}
                         className={styles.img_wrapper}
@@ -56,11 +56,11 @@ const Content0 = () => {
         )
     })
     return (
-            <OverPack className={styles.con0_wrapper}>
+            <OverPack playScale={[0.3, 0.1]} className={styles.con0_wrapper}>
                 <QueueAnim
                     type={['bottom', 'top']}
                     key="con0-header-box">
-                    <ContentHeader key="title0" className="content0" title="基本交易引擎" desc={desc}/>
+                    <ContentHeader isMobile={isMobile} key="title0" className="content0" title="基本交易引擎" desc={desc}/>
                 </QueueAnim>
                 <QueueAnim
                         key="ul"

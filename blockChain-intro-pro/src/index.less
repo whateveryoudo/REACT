@@ -1,3 +1,4 @@
+@import "./assets/fonts/iconfont.css";
 html,
 body,
 :global(#root) {
@@ -26,7 +27,20 @@ body {
 
 // temp fix for https://github.com/ant-design/ant-design/commit/a1fafb5b727b62cb0be29ce6e9eca8f579d4f8b7
 :global {
+  .ant-divider{
+    background: rgba(0,0,0,.2) !important;
+  }
   .ant-spin-container {
     overflow: visible !important;
   }
 }
+
+
+//字体图标优先级处理
+:global {
+  .icon-top:before {
+    content: "\e605";
+    font-family: 'iconfont' !important;
+  }
+}
+

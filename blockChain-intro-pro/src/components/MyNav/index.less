@@ -1,3 +1,4 @@
+@import "~antd/lib/style/themes/default.less";
 @import "../../style/mixin";
 .nav_wrapper{
   top:0;
@@ -8,10 +9,10 @@
   padding:0 45px;
   padding-top:20px;
   transition: padding-top .3s ease-in-out;
-  width: 100%;
   .wh(100%,90px);
   line-height: 90px;
   .textLogo{
+    z-index: 101;
     position: absolute;
     font-size: 25px;
     font-weight: 700;
@@ -24,14 +25,13 @@
     }
   }
   .nav_menu_wrapper{
+
     text-align: center;
     float: right;
     :global{
       .ant-menu{
 
         background: transparent;
-
-
       }
       .ant-menu-horizontal{
         border-bottom: none;
@@ -84,4 +84,107 @@
         }
     }
   }
+}
+
+@media screen and (max-width: 767px) {
+  .nav_wrapper,.nav_wrapper.moving{
+    padding:0 10px;
+    .wh(100%,64px);
+    line-height: 64px;
+    .textLogo{
+      position: absolute;
+      font-size: 17px;
+      font-weight: 700;
+      margin-right: 10px;
+      margin-left: 10px;
+      a{
+        color: @fc;
+      }
+      sup{
+        left: 10px;
+      }
+    }
+    .nav_phone_wrapper{
+
+      .wh(16px,14px);
+      position: absolute;
+      top:0;
+      bottom:0;
+      margin: auto;
+      right: 20px;
+      &.open{
+        .nav_phone_bar{
+          em{
+            &:nth-child(1){
+              transform: translateY(6px) rotate(45deg);
+            }
+            &:nth-child(2){
+              opacity: 0;
+            }
+            &:nth-child(3){
+              transform: translateY(-6px) rotate(-45deg);
+            }
+          }
+        }
+
+        .nav_phone_text{
+          display: block;
+          transition-timing-function: @ease-out;
+        }
+      }
+      .nav_phone_bar{
+        z-index: 100;
+        position: relative;
+        em{
+          display: block;
+          .wh(100%,2px);
+          background: @fc;
+          margin-top: 4px;
+          transition: transform .3s @ease-in-out,opacity .3s @ease-in-out;
+          &:first-child{
+            margin-top: 0;
+          }
+        }
+      }
+    }
+    .nav_phone_text{
+      display: none;
+      position: fixed;
+      transition: opacity .3s @ease-in;
+      top:0;
+      right:0;
+      padding-top: 64px;
+      .wh(100%,100%);
+      background: #001529;
+    }
+  }
+  .nav_wrapper.moving {
+    .textLogo {
+      &.open a{
+        color: @fc;
+      }
+      a {
+        color: @deepFc;
+      }
+    }
+    .nav_phone_wrapper{
+      &.open .nav_phone_bar em{
+        background: @fc;
+      }
+      .nav_phone_bar{
+        em{
+          background: @deepFc;
+        }
+      }
+    }
+
+  }
+    :global {
+      .ant-menu-inline {
+        &>.ant-menu-item{
+          height:44px;
+          line-height: 44px;
+        }
+      }
+    }
 }

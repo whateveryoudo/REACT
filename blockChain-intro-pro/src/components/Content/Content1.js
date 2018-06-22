@@ -26,12 +26,12 @@ const Content1 = () => {
         const delay = getDelay(i);//累计时间
         const liAnim = {opacity:0,type:'from',delay,ease: 'easeOutQuad'}
         const childrenAnim = {...liAnim,x:"+=10",delay : delay};//子项延时
-
+        const layout = {xs : 24,sm : 24,md : 12,lg : 12}
         return (
             <TweenOne
                 animation={liAnim}
                 key={i}>
-                <Col className={styles.list_item_wrapper} span={12}>
+                <Col className={styles.list_item_wrapper} {...layout}>
                     <div className={styles.info_wrapper}>
                         <TweenOne key="h1" animation={childrenAnim} component="h1">
                             {item.title}
