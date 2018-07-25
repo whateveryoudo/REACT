@@ -1,0 +1,11 @@
+.text_ellipsis{
+  overflow: hidden;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+}
+.am-list-item .am-input-control input{
+  text-align: right;
+}
+.am-list-item .am-input-label.am-input-label-5{
+  width: 110px;
+}
