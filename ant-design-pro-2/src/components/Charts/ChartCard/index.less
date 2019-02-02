@@ -1,0 +1,60 @@
+@import '~antd/lib/style/themes/default.less';
+
+.chartCard{
+  position: relative;
+  .metaWrap{
+    float: left;
+  }
+  .chartTop{
+    position: relative;
+    overflow: hidden;
+    width:100%;
+  }
+  .meta{
+    color: @text-color-secondary;
+    font-size: @font-size-base;
+    line-height: 22px;
+    height:22px;
+  }
+  .avatar{
+    position: relative;
+    top:4px;
+    float: left;
+    margin-right: 20px;
+    img{
+      border-radius : 100%;
+    }
+  }
+  .action{
+    position: absolute;
+    top:0;
+    right:0;
+    cursor: pointer;
+  }
+  .total {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    white-space: nowrap;
+    color: @heading-color;
+    margin-top: 4px;
+    font-size: 30px;
+    height: 38px;
+    line-height: 38px;
+  }
+  .contentFixed{
+    position: absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+  }
+
+  .content{
+    position: relative;
+  }
+  .footer{
+    border-top:1px solid @border-color-split;
+    padding-top:9px;
+    margin-top: 8px;
+  }
+}

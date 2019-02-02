@@ -1,0 +1,56 @@
+@import '~antd/lib/style/themes/default.less';
+@nav-header-height: 64px;
+.sider{
+  min-height: 100vh;
+  box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+
+  position: relative;
+  z-index:10;
+  &.light{
+    box-shadow: 2px 0 8px 0 rgba(29, 35, 41, 0.05);
+    background-color: white;
+    .logo{
+      background-color: white;
+      box-shadow: 1px 1px 0 0 @border-color-split;
+      h1{
+        color: @primary-color;
+      }
+    }
+
+    :global(.ant-menu-light){
+      border-right-color:transparent;
+    }
+  }
+}
+//固定sider
+.fixSiderbar{
+  position: fixed;
+  top:0;
+  left:0;
+}
+
+.logo{
+  height:@nav-header-height;
+  line-height: @nav-header-height;
+  padding-left:(@menu-collapsed-width - 32px) / 2;
+  overflow: hidden;
+  background: #002140;
+  transition: all .3s;
+  img{
+    height:32px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  h1{
+    color:white;
+    font-family: Avenir, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    margin: 0 0 0 12px;
+    font-size: 20px;
+    font-weight: 600;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+.icon{
+
+}

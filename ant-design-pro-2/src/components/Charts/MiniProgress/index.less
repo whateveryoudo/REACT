@@ -1,0 +1,33 @@
+@import '~antd/lib/style/themes/default.less';
+.miniProgress{
+  padding:5px 0;
+  position: relative;
+  .progressWrap{
+    background-color: @background-color-base;
+    position: relative;
+  }
+  .progress{
+    transition: all .4s cubic-bezier(0.08, 0.82, 0.17, 1) 0s;
+    border-radius: 1px  0 0 1px;
+    background-color: @primary-color;
+    width:0;
+  }
+  .target{
+    position: absolute;
+    top:0;
+    bottom:0;
+    span{
+      border-radius: 100px;
+      height:4px;
+      width:2px;
+      top:0;
+      left:0;
+      position: absolute;
+    }
+
+    span:last-child{
+      top:auto;
+      bottom: 0;
+    }
+  }
+}
