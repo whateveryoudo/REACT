@@ -19,7 +19,7 @@ export default class GlobalHeader extends React.Component {
             <div className={styles.header}>
                 {isMobile && (
                     <Link to='/' className={styles.logo} key="logo">
-                        <img src={logo} alt=""/>
+                        <img src={logo} alt="" width="32"/>
                     </Link>
                 )}
                 <Icon

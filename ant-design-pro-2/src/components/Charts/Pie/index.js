@@ -3,12 +3,41 @@ import {Divider} from 'antd'
 import {Chart,Tooltip, Geom, Coord} from 'bizcharts'
 import {DataView} from '@antv/data-set'
 import autoHeight from '../autoHeight'
+import Debounce from 'lodash-decorators/debounce';
+import Bind from 'lodash-decorators/bind';
 import classNames from 'classnames'
 import styles from './index.less'
 @autoHeight()
 class Pie extends React.Component{
     state = {
-        legendData : [] //右侧legend数据源
+        legendData : [], //右侧legend数据源
+        legendBlock : false
+    }
+    componentDidMount(){
+        window.addEventListener('resize',this.resize,{passive: true})
+    }
+    @Bind()
+    @Debounce(300)
+    resize(){
+
+        const {hasLegend} = this.props;
+        const {legendBlock} = this.state;
+
+        if(!hasLegend || !this.root){
+            window.removeEventListener('resize',this.resize);
+            return;
+        }
+        if(this.root.parentNode.clientWidth <= 380){
+            if(!legendBlock){
+                this.setState({
+                    legendBlock: true
+                })
+            }
+        }else if(legendBlock){
+            this.setState({
+                legendBlock: false
+            })
+        }
     }
     componentDidUpdate(preProps){
         //render之后,第一次不走(处理切换不同图表)
@@ -73,7 +102,7 @@ class Pie extends React.Component{
             lineWidth = 1,
             className
         } = this.props;
-        const {legendData} = this.state;
+        const {legendData,legendBlock} = this.state;
         //单独需要重新赋值的prop
         const {
             data : propsData,
@@ -89,7 +118,8 @@ class Pie extends React.Component{
         let formatColor;
         const padding = [12,0,12,0];
         const picCls = classNames(styles.pie,className,{
-            [styles.hasLegend] : hasLegend
+            [styles.hasLegend] : hasLegend,
+            [styles.legendBlock] : legendBlock
         })
 
         const scale = {
@@ -137,7 +167,7 @@ class Pie extends React.Component{
         //field 是统计发生的字段（求和，求百分比），dimension 是统计的维度字段，也就是"每个不同的 dimension 下，field 值占总和的百分比"，groupBy 则是分组字段，每一个分组内部独立求百分比（每一个分组内，最后的 percent 字段相加之和为 1）。
 
         return (
-            <div className={picCls}>
+            <div ref={n => this.root = n} className={picCls}>
                 <div className={styles.chart}>
                     <Chart
                         scale={scale}

@@ -1,4 +1,5 @@
 import React from 'react'
+import {Drawer} from 'antd'
 import SiderMenu from './SiderMenu'
 //递归获取所有的path
 
@@ -16,8 +17,21 @@ export const getFlatMenuKeys = menuData => {
 }
 
 const SiderMenuWrapper = props  => {
-    const {menuData} = props;
-    return (
+    const {menuData,isMobile,collapsed,onCollapse} = props;
+    return isMobile ? (
+        <Drawer
+            visible={!collapsed}
+            placement="left"
+            onClose={() =>onCollapse(true)}
+            style={{padding:0,height:'100vh'}}
+        >
+            <SiderMenu
+                {...props}
+                flatMenuKeys={getFlatMenuKeys(menuData)}
+                collapsed={isMobile ? false : collapsed}
+            />
+        </Drawer>
+    ) : (
         <SiderMenu {...props} flatMenuKeys={getFlatMenuKeys(menuData)}/>
     )
 }

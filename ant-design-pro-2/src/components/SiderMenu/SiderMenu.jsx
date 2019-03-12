@@ -58,10 +58,8 @@ export default class SiderMenu extends React.Component {
 
     }
     render() {
-        const {logo,fixSiderbar,theme,collapsed} = this.props;
-        console.log(theme);
+        const {logo,fixSiderbar,theme,collapsed,onCollapse} = this.props;
         const {openKeys} = this.state;
-        //console 不出来
         const siderClassName = classNames(styles.sider,{
             [styles.fixSiderbar] : fixSiderbar,
             [styles.light] : theme === 'light'
@@ -72,6 +70,8 @@ export default class SiderMenu extends React.Component {
                 width={256}
                 collapsed={collapsed}
                 theme={theme}
+                onCollapse={onCollapse}
+                breakpoint="lg" //< lg: '992px', 返回收起 否则返回展开
                 className={siderClassName}>
                 {/*添加默认首页*/}
                 <div className={styles.logo}>

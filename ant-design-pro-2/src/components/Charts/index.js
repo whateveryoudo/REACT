@@ -14,6 +14,8 @@ import Bar from './Bar'
 import Pie from './Pie'
 import TimelineChart from './TimelineChart'
 import WaterWave from './WaterWave'
+import Gauge from './Gauge'
+import TagCloud  from './TagCloud'
 
 import numeral from 'numeral'
 const yuan = val => `¥ ${numeral(val).format('0,0')}`;
@@ -27,7 +29,9 @@ const Charts = {
     Bar,
     Pie,
     TimelineChart,
-    WaterWave
+    WaterWave,
+    Gauge,
+    TagCloud
 }
 
 export {
@@ -41,5 +45,7 @@ export {
     Bar,
     Pie,
     TimelineChart,
-    WaterWave
+    WaterWave,
+    Gauge,
+    TagCloud
 }

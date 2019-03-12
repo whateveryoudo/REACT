@@ -100,9 +100,16 @@ export default class BaseMenu extends React.Component {
                 </a>
             )
         }
-
+        const {onCollapse,isMobile} = this.props;
+        //手机端每次跳转关闭draw
         return (
-            <Link to={itemPath}>
+            <Link
+                to={itemPath}
+                target={target}
+                onClick={
+                    isMobile ? () => {onCollapse(true)} : undefined
+                }
+            >
                 {icon}
                 <span>{name}</span>
             </Link>

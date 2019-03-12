@@ -14,3 +14,11 @@ export async function fakeAccountLogin(params) {
 export async function fakeChartData(){
     return request('/api/fake_chart_data');
 }
+
+export async function queryTags() {
+    return request('/api/tags')
+}
+
+export async function queryProjectNotice() {
+    return request('/api/project/notice')
+}

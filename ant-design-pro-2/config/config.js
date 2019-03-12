@@ -1,7 +1,7 @@
 
-const path = require('path');
 import defaultSettings from '../src/defaultSettings';
 import webpackPlugin from './plugin.config';
+const path = require('path');
 const routes  = [
     {
         path: '/user',
@@ -88,5 +88,5 @@ export default {
     alias : {
         '@' : path.resolve(__dirname, 'src/'),
     },
-    chainWebpack: webpackPlugin
+    // chainWebpack: webpackPlugin  //有问题（等待官方解答https://github.com/ant-design/ant-design-pro/issues/2346）
 }

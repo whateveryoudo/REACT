@@ -1,4 +1,54 @@
 @import "E:\git\REACT\ant-design-pro-2\node_modules\antd\lib\style\themes\default.less";
+.antd-pro-components-active-chart-index-activeChart{
+  position: relative;
+}
+.antd-pro-components-active-chart-index-activeChartGrid{
+  p{
+    position: absolute;
+    top:80px;
+  }
+  p:last-child{
+    top:115px;
+  }
+}
+.antd-pro-components-active-chart-index-activeChartLegend{
+  position: relative;
+  margin-top: 8px;
+  font-size: 0;
+  height: 20px;
+  line-height: 20px;
+  span{
+    display: inline-block;
+    font-size: 12px;
+    text-align: center;
+    width: 33.3%;
+  }
+  span:first-child{
+    text-align: left;
+  }
+  span:last-child{
+    text-align: right;
+  }
+}
+
+.antd-pro-components-active-chart-index-dashedLine{
+  position: relative;
+  height:1px;
+  top:-70px;
+  left: -3px;
+  .antd-pro-components-active-chart-index-line{
+    position: absolute;
+    background-image: linear-gradient(to right, transparent 50%, #e9e9e9 50%);
+    background-size: 6px;
+    top:0;
+    left: 0;
+    width:100%;
+    height:100%;
+  }
+}
+.antd-pro-components-active-chart-index-dashedLine:last-child{
+  top:-36px;
+}
 
 
 
@@ -205,7 +255,53 @@
     }
   }
 }
+.antd-pro-components-charts-pie-index-legendBlock{
+  &.antd-pro-components-charts-pie-index-hasLegend .antd-pro-components-charts-pie-index-chart{
+    width:100%;
+    margin: 0 0 32px 0;
+  }
+  //去除绝对定位  和偏移
+  .antd-pro-components-charts-pie-index-legend{
+    position: relative;
+    transform: none;
+  }
+}
+.antd-pro-components-charts-tag-cloud-index-tagCloud {
+  overflow: hidden;
+  canvas {
+    transform: scale(0.25);
+    transform-origin: 0 0;
+  }
+}
 
+
+
+
+.antd-pro-components-charts-water-wave-index-waterWave{
+  position: relative;
+  display: inline-block;
+  transform-origin: left;
+  .antd-pro-components-charts-water-wave-index-text{
+    position: absolute;
+    left: 0;
+    top:32px;
+    text-align: center;
+    span{
+      color: @text-color-secondary;
+      font-size: 14px;
+      line-height: 22px;
+    }
+    h4{
+      color:@heading-color;
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+  .antd-pro-components-charts-water-wave-index-waterWaveCanvasWrapper {
+    transform: scale(0.5);
+    transform-origin: 0 0;
+  }
+}
 
 
 .antd-pro-components-global-footer-index-globalFooter{
@@ -240,7 +336,17 @@
   box-shadow:0 1px 4px rgba(0, 21, 41, 0.08);
 }
 .antd-pro-components-global-header-index-logo{
-
+  height:64px;
+  line-height: 58px;
+  vertical-align: top;
+  display: inline-block;
+  padding:0 0 0 24px;
+  cursor: pointer;
+  font-size: 20px;
+  img{
+    display: inline-block;
+    vertical-align: middle;
+  }
 }
 .antd-pro-components-global-header-index-trigger{
   font-size: 20px;
@@ -282,6 +388,12 @@
 }
 
 .antd-pro-components-number-info-index-numberInfo{
+  .antd-pro-components-number-info-index-suffix{
+    color:@text-color;
+    font-size: 16px;
+    font-style: normal;
+    margin-left: 4px;
+  }
   .antd-pro-components-number-info-index-numberInfoTitle{
     color:@text-color;
     font-size: @font-size-lg;
@@ -338,6 +450,32 @@
     }
   }
 }
+
+
+.antd-pro-components-page-header-index-pageHeader{
+  background: @component-background;
+  padding:16px 32px 0 32px;
+  border : @border-width-base @border-style-base @border-color-split;
+  .antd-pro-components-page-header-index-detail{
+    display: flex;
+  }
+  .antd-pro-components-page-header-index-row{
+    width: 100%;
+    display: flex;
+  }
+
+  .antd-pro-components-page-header-index-logo{
+    flex : 0 1 auto;
+    margin-right: 16px;
+    padding-top:1px;
+    > img{
+      width:28px;
+      height:28px;
+      border-radius: @border-radius-base;
+      display: block;
+    }
+  }
+}
 .antd-pro-components-page-header-wrapper-grid-content-main{
   width:100%;
   height:100%;
@@ -348,6 +486,7 @@
     margin: 0 auto;
   }
 }
+
 
 .antd-pro-components-setting-drawer-index-content{
     min-height: 100%;
@@ -719,8 +858,73 @@
       color:@primary-color;
     }
 }
+
+
+
+.antd-pro-pages-dashboard-monitor-mapChart{
+  padding-top: 24px;
+  height:452px;
+  text-align: center;
+  img{
+    display: inline-block;
+    max-width: 100%;
+    max-height: 437px;
+  }
+}
+//
+@import "../../utils/utils.less";
+.antd-pro-pages-dashboard-workplace-pageHeaderContent{
+  display: flex;
+  .antd-pro-pages-dashboard-workplace-avatar{
+    flex: 0 1 72px;
+    margin-bottom: 8px;
+    & > span{
+      border-radius: 72px;
+      display: block;
+      width:72px;
+      height: 72px;
+    }
+  }
+  .antd-pro-pages-dashboard-workplace-content{
+    position: relative;
+    top:4px;
+    margin-left: 24px;
+    flex : 1 1 auto;
+    color: @text-color-secondary;
+    line-height: 22px;
+    .antd-pro-pages-dashboard-workplace-contentTitle{
+      font-size: 20px;
+      line-height: 28px;
+      color:@heading-color;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+  }
+}
+.antd-pro-pages-dashboard-workplace-extraContent{
+  .clearFix();
+  float: right;
+  white-space: nowrap;
+  .antd-pro-pages-dashboard-workplace-statItem{
+
+  }
+}
 .antd-pro-pages-user-login-main{
   width:368px;
   margin : 0 auto;
 
+}
+.clearFix(){
+  zoom : 1;
+  &:before,
+  &:after {
+    display: table;
+    content : ' ';
+  }
+  &:after{
+    clear:both;
+    visibility: hidden;
+    font-size: 0;
+    height:0;
+  }
 }

@@ -197,7 +197,6 @@ export default class BasicLayout extends React.Component {
         } = this.props;
         const {menuData,isMobile} = this.state;
         const isTop = PropsLayout === 'topmenu';
-        console.log(menuData);
         const layout = (
             <Layout>
                 {isTop && !isMobile ? null : (
@@ -206,6 +205,8 @@ export default class BasicLayout extends React.Component {
                     theme={navTheme}
                     Authorized={Authorized}
                     menuData={menuData}
+                    isMobile={isMobile}
+                    onCollapse={this.handleMenuCollapse}
                     {...this.props}/>
                 )}
                 {/*右侧内容区*/}

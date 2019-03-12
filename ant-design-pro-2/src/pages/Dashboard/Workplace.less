@@ -1,0 +1,123 @@
+@import '~antd/lib/style/themes/default.less';
+@import "~@/utils/utils.less";
+.pageHeaderContent{
+  display: flex;
+  .avatar{
+    flex: 0 1 72px;
+    margin-bottom: 8px;
+    & > span{
+      border-radius: 72px;
+      display: block;
+      width:72px;
+      height: 72px;
+    }
+  }
+  .content{
+    position: relative;
+    top:4px;
+    margin-left: 24px;
+    flex : 1 1 auto;
+    color: @text-color-secondary;
+    line-height: 22px;
+    .contentTitle{
+      font-size: 20px;
+      line-height: 28px;
+      color:@heading-color;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+  }
+}
+.extraContent{
+  .clearFix();
+  float: right;
+  white-space: nowrap;
+  .statItem{
+    padding:0 32px;
+    position: relative;
+    display: inline-block;
+    >p:first-child{
+      color:@text-color-secondary;
+      font-size: @font-size-base;
+      line-height:22px;
+      margin-bottom: 4px;
+    }
+    >p{
+      color: @heading-color;
+      font-size: 30px;
+      margin: 0;
+      line-height: 38px;
+      >span{
+        color: @text-color-secondary;
+        font-size: 20px;
+      }
+    }
+    &:after{
+      content: ' ';
+      background-color: @border-color-split;
+      position: absolute;
+      top:8px;
+      right:0;
+      width:1px;
+      height:40px;
+    }
+    &:last-child{
+      padding-right: 0;
+      &:after{
+        display: none;
+      }
+    }
+  }
+}
+
+.projectList{
+  :global{
+    .ant-card-meta-description{
+      height:44px;
+      line-height: 22px;
+      overflow: hidden;
+      color: @text-color-secondary;
+    }
+  }
+  .cardTitle{
+    font-size: 0;
+    a{
+      color:@heading-color;
+      margin-left: 12px;
+      line-height: 24px;
+      height: 24px;
+      display: inline-block;
+      vertical-align: top;
+      font-size: @font-size-base;
+      &:hover{
+        color:@primary-color;
+      }
+    }
+  }
+  .projectGrid{
+    width: 33.33%;
+  }
+  .projectItemContent{
+    display: flex;
+    margin-top: 8px;
+    overflow: hidden;
+    font-size: 12px;
+    height:20px;
+    line-height: 20px;
+    .textOverflow();
+    a{
+      color:@text-color-secondary;
+      flex:1 1 0;
+      .textOverflow();
+      &:hover{
+        color: @primary-color;
+      }
+
+    }
+    .datetime{
+      color:@disabled-color;
+      flex : 0 0 auto;
+      float: right;
+    }
+  }
+}
