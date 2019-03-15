@@ -23,6 +23,10 @@ export default [
         component: () => import('E:\\git\\REACT\\react-hoc-admin\\src\\pages\\iframe\\index.jsx'),
     },
     {
+        path: '/text',
+        component: () => import('E:\\git\\REACT\\react-hoc-admin\\src\\pages\\home\\Text.jsx'),
+    },
+    {
         path: '/',
         component: () => import('E:\\git\\REACT\\react-hoc-admin\\src\\pages\\home\\index.jsx'),
     },

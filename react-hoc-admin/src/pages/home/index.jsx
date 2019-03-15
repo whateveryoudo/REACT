@@ -4,6 +4,7 @@ import config from '@/commons/config-hoc'
 @config({
     path: '/',
     title: {local: 'home', text: '首页', icon: 'home'},
+    breadcrumbs : [{key : 'home',text : '首页',local : 'home',icon : 'home'}]
 })
 export default class Home extends React.Component {
 
