@@ -34,7 +34,6 @@ export default class FrameTopSideMenu extends React.Component {
         const isTopSideMenu = layout === PAGE_FRAME_LAYOUT.TOP_SIDE_MENU;
         const isSideMenu = layout === PAGE_FRAME_LAYOUT.SIDE_MENU;
         const hasSide = isTopSideMenu || isSideMenu;//是否有左侧菜单
-
         //判断左边宽度
         sideWidth = sideCollapsed ? sideCollapsedWidth : sideWidth;
         sideWidth = showSide ? sideWidth : 0;
@@ -51,7 +50,9 @@ export default class FrameTopSideMenu extends React.Component {
                         typeof titleText === 'string' ? titleText : ''
                     }
                 />
-                <Header theme={theme} layout={layout}/>
+                <Header
+                    theme={(isTopSideMenu || isSideMenu) ? 'default' : 'dark'} //相反
+                    layout={layout}/>
             </div>
         )
     }

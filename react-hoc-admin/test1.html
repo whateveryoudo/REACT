@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+//    function User(name,age) {
+//        this.name = name;
+//        this.age = age;
+//    }
+//    User.prototype.say = function () {
+//        alert('你的名字是：' + this.name + '；你的年龄是：' + this.age);
+//    }
+//
+//    var user1 = new User('小明',12);
+//    user1.say();
+    class User{
+        constructor(...args){
+            this.name = args[0];
+            this.age = args[1];
+            this.say.bind(this);
+        }
+        say(){
+            alert('你的名字是：' + this.name + '；你的年龄是：' + this.age);
+        }
+    }
+    var user1 = new User('小明',12);
+    user1.say();
+
+</script>
+</html>

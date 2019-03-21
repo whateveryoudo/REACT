@@ -1,10 +1,74 @@
+@headerHeight: 64px;
+@transitionDuration: 300ms;
+@layout-header-background: #001529;
+@primary-color: #1890ff;
 .header{
-  .logo{
-    .test{
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top:0;
+  right:0;
+  left: 0;
+  height:@headerHeight;
+  padding-right: 16px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
 
+  .logo{
+    display: inline-flex;
+    align-items: center;
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: @headerHeight;
+    position: relative;
+    overflow: hidden;
+    background: @layout-header-background;
+    box-shadow: 2px 0 6px lighten(@layout-header-background, 10%);
+    h1{
+      color:#fff;
     }
   }
-}
-.trigger{
-
+  .trigger{
+    padding:0 24px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    height:100%;
+    align-items: center;
+    transition: all .3s;
+    &:hover {
+      background: @primary-color;
+    }
+  }
+  .center{
+    flex-shrink: 1;
+    flex-grow: 1;
+    overflow: auto;
+  }
+  .right{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    .action{
+      height:100%;
+      cursor: pointer;
+      display: flex;
+      padding: 0 6px;
+      align-items: center;
+    }
+  }
+  &[data-theme=dark]{
+    background: @layout-header-background;
+    box-shadow: 2px 0 6px lighten(@layout-header-background, 10%);
+    .logo{
+      background: @layout-header-background;
+      box-shadow: none;
+    }
+    .acton{
+      &:global(.ant-popover-open),
+      &:hover {
+        background: lighten(@layout-header-background, 10%) !important;
+      }
+    }
+  }
 }
