@@ -43,7 +43,11 @@ export default class Index extends React.Component {
             displayColorPicker : !displayColorPicker
         })
     }
-
+    handleClose = () => {
+        this.setState({
+            displayColorPicker : false
+        })
+    }
     render() {
         const {
             small,
@@ -74,19 +78,30 @@ export default class Index extends React.Component {
                 zIndex : '2'
             },
             cover : {
-
+                position : 'fixed',
+                top : '0px',
+                bottom : '0px',
+                left : '0px',
+                right : '0px',
+            },
+            wrapper : {
+                position:'inherit',
+                zIndex : 100
             }
 
         }
         const picker = displayColorPicker ? (
             <div style={styles.popover}>
-                <div ></div>
-                <Picker
+                <div style={styles.cover} onClick={this.handleClose}/>
+                <div style={styles.wrapper}>
+                    <Picker
                     {...this.props}
-                    color={color}
-                    onChange={this.handleChange}
-                    changeComplete = {this.handleChangeComplete}
-                />
+                        color={color}
+                        onChange={this.handleChange}
+                        onChangeComplete = {this.handleChangeComplete}
+                        />
+                </div>
+
             </div>
 
         ) : null;

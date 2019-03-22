@@ -13,5 +13,10 @@ export default {
         local : defaultLang.local,//默认语言
         i18n : defaultLang.i18n,//默认语言集
         primaryColor //默认系统主题色
+    },
+    //设置主题色
+    setPrimaryColor : (primaryColor) => {
+        setItem('primaryColor',primaryColor);
+        return {primaryColor};
     }
 }

@@ -5,31 +5,19 @@
     <title>Title</title>
 </head>
 <body>
-
+ <button onclick="user1.say()">点我试试看</button>
 </body>
 <script>
-//    function User(name,age) {
-//        this.name = name;
-//        this.age = age;
-//    }
-//    User.prototype.say = function () {
-//        alert('你的名字是：' + this.name + '；你的年龄是：' + this.age);
-//    }
-//
-//    var user1 = new User('小明',12);
-//    user1.say();
-    class User{
-        constructor(...args){
-            this.name = args[0];
-            this.age = args[1];
-            this.say.bind(this);
-        }
-        say(){
-            alert('你的名字是：' + this.name + '；你的年龄是：' + this.age);
+    var obj1 = {
+        b : '测试语句',
+        a : function(){
+            console.log(this);
+            var c = function (){
+                console.log(this);
+            }
+            c();
         }
     }
-    var user1 = new User('小明',12);
-    user1.say();
-
+    console.log(obj1.a());
 </script>
 </html>
