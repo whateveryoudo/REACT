@@ -1,3 +1,7 @@
+
+
+const CURRENT_USER_KEY = 'current-user';
+
 //复合函数方法
 export function compose(funcs) {
     if(funcs.length === 0){
@@ -19,4 +23,11 @@ export function loadScript(src) {
         script.onerror = reject;
         document.head.appendChild(script);
     })
+}
+export function getLoginUser() {
+    const loginUser = sessionStorage.getItem(CURRENT_USER_KEY);
+    return loginUser ? JSON.parse(loginUser) : null;
+}
+export function isAuthenticated(){
+    return !!getLoginUser();
 }

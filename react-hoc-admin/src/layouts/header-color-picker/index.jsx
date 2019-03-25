@@ -55,7 +55,6 @@ export default class ThemeColorPicker extends React.Component {
     //监听选择颜色改变
     handleColorChange = (color) => {
         const changeColor = () => {
-            debugger;
             window.less
                 .modifyVars({
                     ...theme,
