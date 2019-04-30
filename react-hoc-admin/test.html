@@ -5,34 +5,91 @@
     <title>Title</title>
 </head>
 <body>
-
+<h4 style="margin-top: 2000px">测试语句</h4>
 </body>
 <script>
-    function Foo(){
-        getName = function () {
-            alert(1)
-        }
-        return this;
-    }
-    Foo.getName = function () {
-        alert(2)
-    }
-    Foo.prototype.getName = function () {
-        alert(3)
-    }
-    var getName = function () {
-        alert(4)
-    }
-    function getName() {
-        alert(5)
-    }
+//    function Foo(){
+//        getName = function () {
+//            alert(1)
+//        }
+//        return this;
+//    }
+//    Foo.getName = function () {
+//        alert(2)
+//    }
+//    Foo.prototype.getName = function () {
+//        alert(3)
+//    }
+//    var getName = function () {
+//        alert(4)
+//    }
+//    function getName() {
+//        alert(5)
+//    }
+//
+//    Foo.getName();
+//    getName();
+//    Foo().getName();
+//    getName();
+//    new Foo.getName();
+//    new Foo().getName();
+//    new new Foo().getName();
 
-    Foo.getName();
-    getName();
-    Foo().getName();
-    getName();
-    new Foo.getName();
-    new Foo().getName();
-    new new Foo().getName();
+//   防抖节流
+function throttle(fn, threshhold) {
+    // 记录上次执行的时间
+    var last
+    var timer
+
+    // 默认间隔为 250ms
+    threshhold || (threshhold = 250)
+
+    // 返回的函数，每过 threshhold 毫秒就执行一次 fn 函数
+    return function () {
+        // 保存函数调用时的上下文和参数，传递给 fn
+        var context = this
+        var args = arguments
+        var now = +new Date()
+        // 如果距离上次执行 fn 函数的时间小于 threshhold，那么就放弃
+        // 执行 fn，并重新计时
+        if (last && now < last + threshhold) {
+            clearTimeout(timer)
+
+            // 保证在当前时间区间结束后，再执行一次 fn
+            timer = setTimeout(function () {
+                last = now
+                fn.apply(context, args)
+            }, threshhold)
+
+            // 在时间区间的最开始和到达指定间隔的时候执行一次 fn
+        } else {
+            last = now
+            fn.apply(context, args)
+        }
+    }
+}
+var handler = function () {
+    console.log('throttle')
+}
+window.onscroll = throttle(handler)
+
+
+    const result = data.map(item => {
+        const {installStatus,distIntervals} = item;
+        let newDisIntervals = [];
+        if(distIntervals && distIntervals.length > 0){
+            newDisIntervals.map(dItem => {
+                return {
+                    ...dItem,
+                    installStatus
+                }
+            })
+        }
+        return {
+            ...item,
+            distIntervals : newDisIntervals
+        }
+    })
+
 </script>
 </html>

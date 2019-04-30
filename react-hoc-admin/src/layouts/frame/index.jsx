@@ -2,17 +2,20 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import {connect} from '@/models/index'
 import {PAGE_FRAME_LAYOUT} from '@/models/settings'
+import PageTabs from '../page-tabs';
 import Header from '../header'
 
 @connect(state => {
     const {title} = state.page;
     const {show : showSide,dragging,collapsed,collapsedWidth,width} = state.side;
+    const {tabsShow} = state.settings;
     return {
         title,
         sideWidth : width,
         sideCollapsedWidth : collapsedWidth,
         sideCollapsed : collapsed,
-        showSide
+        showSide,
+        tabsShow
     }
 })
 export default class FrameTopSideMenu extends React.Component {
@@ -28,6 +31,7 @@ export default class FrameTopSideMenu extends React.Component {
             sideCollapsedWidth,
             pageHeadFixed,
             sideCollapsed,
+            tabsShow,
             title
         } = this.props;
         const titleText = title?.text || title;
@@ -53,6 +57,7 @@ export default class FrameTopSideMenu extends React.Component {
                 <Header
                     theme={(isTopSideMenu || isSideMenu) ? 'default' : 'dark'} //相反
                     layout={layout}/>
+                {tabsShow ? <div><PageTabs/></div> : null}
             </div>
         )
     }

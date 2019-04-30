@@ -28,6 +28,8 @@ export default function domEvent({addPropName = 'addEventListener',removePropNam
                 })
             }
             render(){
+
+                console.log(this.props)
                 //方法注入
                 const injectProps = {
                     [addPropName] : this[addPropName],
