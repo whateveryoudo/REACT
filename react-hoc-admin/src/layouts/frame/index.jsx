@@ -57,7 +57,10 @@ export default class FrameTopSideMenu extends React.Component {
                 <Header
                     theme={(isTopSideMenu || isSideMenu) ? 'default' : 'dark'} //相反
                     layout={layout}/>
-                {tabsShow ? <div styleName="page-tabs"><PageTabs/></div> : null}
+                {tabsShow ? <div
+                    styleName="page-tabs"
+                    style={{left : hasSide ? sideWidth : 0}}
+                ><PageTabs/></div> : null}
             </div>
         )
     }
