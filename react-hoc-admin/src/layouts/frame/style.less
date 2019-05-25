@@ -1,0 +1,16 @@
+
+@headerHeight: 64px;
+@contentTop: @headerHeight;
+@pageTabsHeight: 40px;
+
+.page-tabs{
+  position: fixed;
+  right:0;
+  top:@contentTop;
+  height:@pageTabsHeight;
+  background-color: #fff;
+  z-index:998;
+  :global(.ant-tabs-bar){
+    padding-top:7px;
+  }
+}

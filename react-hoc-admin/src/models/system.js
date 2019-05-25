@@ -13,7 +13,15 @@ export default {
         local : defaultLang.local,//默认语言
         i18n : defaultLang.i18n,//默认语言集
         primaryColor, //默认系统主题色
-        tabs: []
+        //先写死
+        tabs: [
+            {active : true,path : '/',text : {local:'home',text : '首页',icon : 'home'},scrollTop : 0},
+            {
+                active : false,path : '/example/antd/table-editable',icon :"deployment-unit",
+                text : {local:"tableEditable",text : '可编辑表格'},
+                scrollTop : 0
+            },
+        ]
     },
     //设置主题色
     setPrimaryColor : (primaryColor) => {

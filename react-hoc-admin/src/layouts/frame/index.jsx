@@ -4,7 +4,7 @@ import {connect} from '@/models/index'
 import {PAGE_FRAME_LAYOUT} from '@/models/settings'
 import PageTabs from '../page-tabs';
 import Header from '../header'
-
+import './style.less'
 @connect(state => {
     const {title} = state.page;
     const {show : showSide,dragging,collapsed,collapsedWidth,width} = state.side;
@@ -57,7 +57,7 @@ export default class FrameTopSideMenu extends React.Component {
                 <Header
                     theme={(isTopSideMenu || isSideMenu) ? 'default' : 'dark'} //相反
                     layout={layout}/>
-                {tabsShow ? <div><PageTabs/></div> : null}
+                {tabsShow ? <div styleName="page-tabs"><PageTabs/></div> : null}
             </div>
         )
     }
