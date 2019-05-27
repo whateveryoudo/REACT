@@ -20,14 +20,14 @@ export const keepAlives = [
 export default [
     {
         path: '/text',
-        component: () => import('E:\\git\\REACT\\react-hoc-admin\\src\\pages\\home\\Text.jsx'),
+        component: () => import('E:\\git\\REACT\\REACT\\react-hoc-admin\\src\\pages\\home\\Text.jsx'),
     },
     {
         path: '/',
-        component: () => import('E:\\git\\REACT\\react-hoc-admin\\src\\pages\\home\\index.jsx'),
+        component: () => import('E:\\git\\REACT\\REACT\\react-hoc-admin\\src\\pages\\home\\index.jsx'),
     },
     {
         path: '/iframe_page_/:src',
-        component: () => import('E:\\git\\REACT\\react-hoc-admin\\src\\pages\\iframe\\index.jsx'),
+        component: () => import('E:\\git\\REACT\\REACT\\react-hoc-admin\\src\\pages\\iframe\\index.jsx'),
     },
 ];
