@@ -1,0 +1,78 @@
+.draggable-tabs-bar-root{
+  display:flex;
+  align-items: center;
+  width:100%;
+  height:35px;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding-left: 2px;
+}
+
+.draggable-tabs-bar-root.sorting,
+.draggable-tabs-bar-root.sorting * {
+  cursor: move !important;
+}
+
+
+
+
+
+body > .draggable-tabs-bar-horizontal-item{
+  z-index:999;
+  transition: 0ms;
+}
+.draggable-tabs-bar-horizontal-item{
+  display: flex;
+  flex-shrink : 1;
+  flex-grow: 0;
+  justify-content: space-between;
+  align-items:center;
+  box-sizing: border-box;
+  overflow: hidden;
+  user-select: none;
+  font-weight: 400;
+  height:100%;
+}
+
+.draggable-tabs-bar-horizontal-item .draggable-tabs-bar-horizontal-item-inner{
+
+  display: flex;
+  align-items: center;
+  height:100%;
+  transition: width 300ms;
+  box-sizing: border-box;
+  padding-right: 2px;
+
+}
+.draggable-tabs-bar-horizontal-item .draggable-tabs-bar-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width:100%;
+  height:100%;
+  padding:0 8px;
+  border:1px solid #e8e8e8;
+  border-bottom: 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #fafafa;
+  color:#333;
+  transition:300ms;
+}
+.draggable-tabs-bar-horizontal-item .active .draggable-tabs-bar-wrapper,
+.draggable-tabs-bar-horizontal-item .hover .draggable-tabs-bar-wrapper {
+  background: #fff;
+  color: #1890ff;
+}
+
+
+.draggable-tabs-bar-horizontal-item .item-inner {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+}
