@@ -6,6 +6,8 @@ import config from '@/commons/config-hoc'
 import {isAuthenticated} from '@/commons'
 import PageLoading from '@/layouts/page-loading'
 import routes,{noFrameRoutes,noAuthRoutes} from './routes'
+import KeepAuthRoute from './KeepAuthRoute'
+
 
 //代码分割
 const allRoutes = routes.map(item => {
@@ -49,10 +51,11 @@ export default class AppRouter extends React.Component {
                                 isNoAuthRoute = true;
                             }
                             return (
-                                <Route
+                                <KeepAuthRoute
                                     key={path}
                                     exact
                                     path={path}
+                                    noAuth={isNoAuthRoute}
                                     component={component}
                                 />
                             )

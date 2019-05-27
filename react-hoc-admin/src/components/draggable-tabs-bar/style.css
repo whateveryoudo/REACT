@@ -10,7 +10,7 @@
 
 .draggable-tabs-bar-root.sorting,
 .draggable-tabs-bar-root.sorting * {
-  cursor: move;
+  cursor: move !important;
 }
 
 

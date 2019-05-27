@@ -2,12 +2,14 @@ import React from 'react'
 //整合多个高阶组件
 import {Component} from 'react'
 import {compose} from '@/commons'
+import {withRouter} from 'react-router-dom'
 import eventHoc from '@/library/utils/dom-event-hoc'
 import queryHoc from '../query-hoc'
 import {connect as reduxConnect} from '@/models'
 export default (options) => {
     return WrappedComponent => {
         const {
+            router = false, //是否添加withRouter装饰器,自定义组件能够使用history等api
             query = false, //地址查询转换的高阶组件,true: this.props.query获取查询字符串
             title = false, //true:当前界面通过menus生成title ;  false: 界面不现实title;string : 自定义title(不会参与国际化);object:{local,text} local对应国际化menu的配置，text为失败后默认的显示，function(props) 返回值作为title
             connect = true,  //是否与redux进行连接 true : 只注入了this.props.action相关方法;false:不进行连接；(state) => ({title : state.page.title}) 函数返回数据注入this.props中
@@ -20,6 +22,8 @@ export default (options) => {
             hocFuncs.push(eventHoc());
         }
         if(query === true){hocFuncs.push(queryHoc())};
+        console.log(withRouter);
+        if(router === true){hocFuncs.push(withRouter)};
         if(connect === true){hocFuncs.push(reduxConnect())};
         if(typeof connect === 'function'){
             hocFuncs.push(reduxConnect(connect))
