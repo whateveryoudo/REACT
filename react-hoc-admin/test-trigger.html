@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #popover-wrapper{
+        width:500px;
+        height:500px;
+        border:1px solid red;
+        display: none;
+    }
+</style>
+<body>
+<button onclick="handleToggle(event)">
+    测试点击关闭操作
+</button>
+    <button onclick="other()">其他操作</button>
+    <div id="popover-wrapper"> popover 内容区域</div>
+</body>
+
+</html>
+<script>
+    function contains(root,node){
+        while (node){
+            if(root === node){
+                return true
+            }
+            node = node.parentNode;
+        }
+
+        return false
+    }
+    function handleToggle(e){
+        e.stopPropagation();
+        var popoverElem = document.getElementById('popover-wrapper');
+        if(popoverElem.style.display === 'block'){
+            popoverElem.style.display = 'none';
+        }else{
+            popoverElem.style.display = 'block';
+        }
+    }
+
+    window.onload = function(){
+        var popoverElem = document.getElementById('popover-wrapper');
+
+        document.addEventListener('click',function (e) {
+            console.log(e.target);
+            var flag = contains(popoverElem,e.target);
+            if(!flag){
+                popoverElem.style.display = 'none';
+            }
+        })
+    }
+    function other(){
+        console.log('其他操作');
+    }
+</script>
