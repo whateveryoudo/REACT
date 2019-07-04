@@ -8,20 +8,59 @@
 
 </body>
 <script>
-   let testArr = [
-       {name : 'asdasd',id : 121},
-       {name : 'asdasdasdas',id : 123},
-   ];
-    const transformData = (originalData,labelKeyName = 'name',valueKeyName = 'id') => {
-        return originalData.map(item => {
-            const {[labelKeyName] : label, [valueKeyName] : value,...rest} = item;
-            return {
-                label,
-                value,
-                ...rest
-            }
-        }) || [];
+    <!--js 实现继承方式-->
+//    原型链继承
+    function Parent(name) {
+        this.val = name || '父级内容';
+        this.dates = ['2012'];//引用类型问题
     }
-    console.log(transformData(testArr));
+    Parent.prototype.say = function () {
+        console.log('我是' + this.val);
+    }
+//    function Child() {
+//        this.val = '子级内容'
+//    }
+//    Child.prototype = Parent.prototype;//因为Sub.prototype中修改属性后，不能影响Super.prototype里面的对象
+//    Child.prototype = new Parent();
+//
+//
+//    var child1 = new Child();
+//    var child2 = new Child();
+//    child1.dates.push('2019')
+////    child2.say();
+//    console.log(child1.dates);
+//    console.log(child2.dates);
+//    借用构造函数继承
+//    function Child(name) {
+//        Parent.call(this,name);
+//        this.age = 20;
+//    }
+//    var child1 = new Child();//公共方法无法使用
+//    console.log(child1.val)
+//    组合继承
+//    function Child(name){
+//        Parent.call(this,name);
+//    }
+//    Child.prototype = new Parent();这里会调用两次构造函数
+//
+//    var child = new Child('子的名字');
+//    console.log(child.val);
+//    child.say();
+//    寄生继承组合继承
+    //创建只继承原型对象的方法
+    function inheritPrototype(parent,child) {
+//        var prototype = new Object(parent.prototype);
+        var prototype = Object.create(parent.prototype);
+        prototype.constructor = child;
+        child.prototype = prototype;
+    }
+    function Child(name) {
+        Parent.call(this,name);
+    }
+
+    inheritPrototype(Parent,Child);
+
+    var child = new Child('子项');
+    child.say();
 </script>
 </html>

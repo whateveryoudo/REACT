@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简易双向绑定原理</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" placeholder="请输入内容">
+        <div id="showBlock"></div>
+    </div>
+</body>
+<script>
+    //修改数据为可观测的
+    function observable(obj){
+        //该对象所有属性转为可观测的
+        if(!obj || typeof obj !== 'object'){return}
+        var keys = Object.keys(obj);
+        keys.forEach(function(key){
+            defineReactive(obj,key,obj[key])//对单条属性进行渲染劫持
+        })
+    }
+    function defineReactive(obj,key,val){
+        var dep = new Dep();//消息订阅器收集订阅
+        Object.defineProperty(obj,key,{
+            get(){
+                dep.depend();
+                console.log('属性' + key + '被读取了');
+                return val;
+            },
+            set(newVal){
+                val = newVal;//设置为最新的值
+                console.log('属性' + key + '被修改了')
+                dep.notify();
+            }
+        })
+    }
+    class Dep{
+        constructor(){
+            this.subs = [];
+        }
+        //增加订阅
+        addSub(sub){
+            this.subs.push(sub);
+        }
+        depend(){
+            if(Dep.target){
+                this.addSub(Dep.target);
+            }
+        }
+        notify(){
+            this.subs.forEach(function (sub) {
+                sub.update();//通知订阅者更新
+            })
+        }
+    }
+    Dep.target = null;//静态属性保存唯一实例对象
+    class Watcher{
+        constructor(vm,exp,cb){
+            this.vm = vm;
+            this.exp = exp;
+            this.cb = cb;
+            //添加订阅器的操作
+            this.value = this.get();
+        }
+        get(){
+            Dep.target = this;//缓存当前类
+            var value = this.vm.data[this.exp];//执行监听的get函数
+            Dep.target = null;//释放类（这时候收集订阅已经完成）
+            return value;
+        }
+        update(){
+            //对比老的值与新的值,如有改变执行回调函数更新内容
+            var value = this.vm.data[this.exp];
+            var oldValue = this.value;
+            if(value !== oldValue){
+                this.cb.call(this.vm,value,oldValue);
+            }
+        }
+    }
+    //data为数据,el为显示数据的dom,name为data数据key
+    function diyVue(data,el,exp){
+        debugger;
+        this.data = data;
+        observable(data);//处理为可观测数据
+        el.innerHTML = data[exp]//初始化默认值
+        //创建watcher订阅器
+        new Watcher(this,exp,function(value){
+            el.innerHTML = value
+        })
+        return this;
+    }
+    var el = document.getElementById('showBlock');
+    var input = document.querySelector('input');
+
+    var diyVue = new diyVue({
+        text : 'aaaaa'
+    },el,'text')
+    input.oninput = function (e) {
+        diyVue.data.text = e.target.value;
+    }
+
+
+</script>
+</html>

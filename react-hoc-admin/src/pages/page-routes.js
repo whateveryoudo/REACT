@@ -19,11 +19,11 @@ export const keepAlives = [
 // 页面路由配置
 export default [
     {
-        path: '/iframe_page_/:src',
-        component: () => import('E:\\git\\REACT\\react-hoc-admin\\src\\pages\\iframe\\index.jsx'),
-    },
-    {
         path: '/',
         component: () => import('E:\\git\\REACT\\react-hoc-admin\\src\\pages\\home\\index.jsx'),
+    },
+    {
+        path: '/iframe_page_/:src',
+        component: () => import('E:\\git\\REACT\\react-hoc-admin\\src\\pages\\iframe\\index.jsx'),
     },
 ];
